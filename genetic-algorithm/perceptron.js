@@ -62,3 +62,16 @@ function perceptronSigmoid(inputs, weights,bias){
         output += bias;
         return 1 / ( 1 + (Math.E ** -output));
 }
+
+function runLayerRelu(inputs,layer){
+    var result=[];
+    for(neuron in layer){
+        result.push(perceptronRELU(inputs,layer[neuron][1],layer[neuron][0]));
+    }
+    return result
+}
+function runLayerSigmoid(inputs,layer){
+    var result=[];
+    result.push(perceptronSigmoid(inputs,layer[layer.length-1][1],layer[layer.length-1][0]));
+    return result
+}

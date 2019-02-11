@@ -45,11 +45,20 @@ function SigmoidNeuron(numInputs){
     }
 }
 
-function perceptronRELU(inputs,weights,constant){
+function perceptronRELU(inputs,weights,bias){
     let output = 0;
     for(input in inputs){
         output += inputs[input]*weights[input];
     }
-    output = output + constant;
+    output += bias;
     return Math.max(0,output)
+}
+
+function perceptronSigmoid(inputs, weights,bias){
+    output = 0;
+        for (var i = 0; i < inputs.length; i++){
+           output += weights[i] * inputs[i]
+        }
+        output += bias;
+        return 1 / ( 1 + (Math.E ** -output));
 }

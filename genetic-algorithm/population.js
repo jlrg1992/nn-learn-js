@@ -17,13 +17,13 @@ function population(inputs,hidArrLay,out,size, mutationRate, fitnessFunction, ki
     this.naturalSelection = function(){
         this.agents.sort(function(a, b){return b.fitness-a.fitness});
         var average = 0;
-        var top = this.agents[0].fitness;
+        topAgent = [this.agents[0].fitness, this.agents[0].generation];
+        lowestAgent = [this.agents[this.agents.length-1].fitness,this.agents[this.agents.length-1].generation]
+        console.log(topAgent);
+        console.log(lowestAgent);
         for(var z = 0; z < this.agents.length; z++){
             average += this.agents[z].fitness
         }
-        average = average/this.agents.length;
-        document.getElementById("top-fitness").innerHTML = top;
-        document.getElementById("average-fitness").innerHTML = average;
 
         this.agents = this.agents.slice(0, this.toKill);
 
@@ -46,7 +46,6 @@ function population(inputs,hidArrLay,out,size, mutationRate, fitnessFunction, ki
             }
             this.naturalSelection();
         }
-        console.log("Apagado");
     }
     this.agents = this.createPopulation();
 }
